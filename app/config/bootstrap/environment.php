@@ -16,9 +16,11 @@ Environment::is(function($request) {
 		}*/
 		//str pos search analouge to general environment detection:
 		if (strpos($http_host, '.local')){
+			ini_set("display_errors", 1);
 			return 'development';
 		}
 		if (strpos($http_host,'.test') || strpos($http_host, '.weluse.de')){
+			ini_set("display_errors", 1);
 			return 'test';
 		}
 	return 'production';
