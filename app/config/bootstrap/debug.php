@@ -27,30 +27,35 @@ Dispatcher::applyFilter('_call', function($self, $params, $chain) {
     return $chain->next($self, $params, $chain);
 });
 
-Connections::get("default")->applyFilter("read", function($self, $params, $chain) {
-	$response = $chain->next($self, $params, $chain);
-	if (is_a($params['query'], 'lithium\data\model\Query')) {
-		/**
-		 * dump the query-object-data as array:
-		 */
-		//var_dump($params['query']->export($self));
-
-		/**
-		 * dump the result:
-		 */
-		//var_dump($res->data());
-	} //
-    return $response;
-});
 
 
-Connections::get('default')->applyFilter("_execute", function($self, $params, $chain) {
-	$response = $chain->next($self, $params, $chain);
-	if (!Environment::is('production')) {
-		Logger::info(print_r($params['sql'],true));
-	}
-	return $response;
-});
+foreach(Connections::get() as $connection_name) {
+	
+	Connections::get($connection_name)->applyFilter("read", function($self, $params, $chain) {
+		$response = $chain->next($self, $params, $chain);
+		if (is_a($params['query'], 'lithium\data\model\Query')) {
+			/**
+			 * dump the query-object-data as array:
+			 */
+			//var_dump($params['query']->export($self));
+
+			/**
+			 * dump the result:
+			 */
+			//var_dump($res->data());
+		} //
+		return $response;
+	});
+
+	Connections::get($connection_name)->applyFilter("_execute", function($self, $params, $chain) {
+		$response = $chain->next($self, $params, $chain);
+		if (!Environment::is('production')) {
+			Logger::info(print_r($params['sql'],true));
+		}
+		return $response;
+	});
+
+}
 
 /**
  * Inspect the message, and do a string conversion via print_r
