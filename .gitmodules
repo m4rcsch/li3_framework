@@ -1,3 +1,15 @@
 [submodule "libraries/lithium"]
 	path = libraries/lithium
 	url = git@git.weluse.de:wlib/lithium_core_lib.git
+[submodule "libraries/li3_behaviors"]
+	path = libraries/li3_behaviors
+	url = git@git.weluse.de:wlib/li3_behaviors.git
+[submodule "libraries/li3_dateable"]
+	path = libraries/li3_dateable
+	url = git@git.weluse.de:wlib/li3_dateable.git
+[submodule "libraries/li3_access"]
+	path = libraries/li3_access
+	url = git@git.weluse.de:wlib/li3_access.git
+[submodule "libraries/li3_flash"]
+	path = libraries/li3_flash
+	url = git@git.weluse.de:wlib/li3_flash.git
