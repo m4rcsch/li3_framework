@@ -21,7 +21,10 @@
 	<meta name="author" content="weluse GmbH">
 	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
-	<?php echo $this->html->style(array('style','debug', 'lithium')); ?>
+	<?php
+	//remove debug, lithium and add your own custom style!
+	echo $this->html->style(array('style','debug', 'lithium'));
+	?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
 	<?=$this->html->script('libs/modernizr-2.0.6.min', array('async' => ''));?>
 <?php
