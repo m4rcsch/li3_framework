@@ -4,6 +4,7 @@
  */
 
 use lithium\core\Environment;
+use lithium\core\ConfigException;
 
 Environment::is(function($request) {
 		$http_host = $request->env('HTTP_HOST');
@@ -26,4 +27,12 @@ Environment::is(function($request) {
 	return 'production';
 });
 
+$preferred_locales = array('de_DE.utf8', 'de_DE@euro', 'de_DE', 'de', 'ge');
+
+$loc_de = setlocale (LC_ALL, $preferred_locales);
+
+if(!in_array($loc_de, $preferred_locales)){
+	$locales = implode(', ', $preferred_locales);
+	throw new ConfigException('preferred Locale is not Supported: ' . $locales);
+}
 ?>
