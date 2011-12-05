@@ -1,0 +1,3 @@
+v1.1.0:
+ - sassified
+ - using locale de... (throws error if not exitend) => see readme.md
