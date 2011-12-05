@@ -1,4 +1,7 @@
 .DS_Store
 app/libraries/*
 app/resources/tmp/*
+app/webroot/.sass-cache
+app/webroot/css/*
 .*.sw[op]
+*.log

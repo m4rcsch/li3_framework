@@ -1,0 +1,46 @@
+@import compass/css3/border-radius
+@import compass/css3/box-shadow
+@import compass/css3/gradient
+@import compass/css3/background-size
+
+@import style.sass
+@import debug.sass
+@import lithium.sass
+
+
+body
+  #container
+    #main
+      #content
+        .section
+          table
+            td
+              form
+                background: none
+                padding: 0
+                border: 0 none
+                margin: 0
+                +box-shadow(none)
+                display: inline-block
+                clear: none
+                
+                input
+                  background: none
+                  +box-shadow(none)
+                  padding: 0
+                  border: none !important
+                  font-weight: normal
+                  font-size: 13px
+                  color: #00e
+                  margin: 0
+                  
+                  &:hover
+                    color: #00bbff
+  
+  #message
+    display: block
+    
+    .messageFlashError
+      background-color: lightpink
+      border: 1px solid red
+      padding: 0.5em
