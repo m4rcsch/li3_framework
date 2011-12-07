@@ -23,7 +23,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<?php
 	//remove debug, lithium and add your own custom style!
-	echo $this->html->style(array('style','debug', 'lithium'));
+	echo $this->html->style(array('screen'));
 	?>
 	<?php echo $this->html->link('Icon', null, array('type' => 'icon')); ?>
 	<?=$this->html->script('libs/modernizr-2.0.6.min', array('async' => ''));?>
