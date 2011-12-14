@@ -16,7 +16,7 @@
 <head>
 <head>
 	<?php echo $this->html->charset();?>
-	<title>Application > <?php echo $this->title(); ?></title>
+	<title>Application &gt; <?php echo $this->title(); ?></title>
 	<meta name="description" content="">
 	<meta name="author" content="weluse GmbH">
 	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
