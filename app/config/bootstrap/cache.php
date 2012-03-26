@@ -2,7 +2,7 @@
 /**
  * Lithium: the most rad php framework
  *
- * @copyright     Copyright 2011, Union of RAD (http://union-of-rad.org)
+ * @copyright     Copyright 2012, Union of RAD (http://union-of-rad.org)
  * @license       http://opensource.org/licenses/bsd-license.php The BSD License
  */
 
@@ -15,10 +15,6 @@ use lithium\core\Libraries;
 use lithium\core\Environment;
 use lithium\action\Dispatcher;
 use lithium\storage\cache\adapter\Apc;
-
-if (PHP_SAPI === 'cli') {
-	return;
-}
 
 /**
  * If APC is not available and the cache directory is not writeable, bail out. This block should be
@@ -43,7 +39,7 @@ if ($apcEnabled) {
 Cache::config(compact('default'));
 
 /**
- * Caches paths for auto-loaded and service-located classes.
+ * Caches paths for auto-loaded and service-located classes when in production.
  */
 Dispatcher::applyFilter('run', function($self, $params, $chain) {
 	if (!Environment::get('production')) {

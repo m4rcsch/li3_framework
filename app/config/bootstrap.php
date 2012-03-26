@@ -2,7 +2,7 @@
 /**
  * Lithium: the most rad php framework
  *
- * @copyright     Copyright 2011, Union of RAD (http://union-of-rad.org)
+ * @copyright     Copyright 2012, Union of RAD (http://union-of-rad.org)
  * @license       http://opensource.org/licenses/bsd-license.php The BSD License
  */
 
@@ -42,7 +42,9 @@ require __DIR__ . '/bootstrap/errors.php';
  * This file contains configurations for connecting to external caching resources, as well as
  * default caching rules for various systems within your application
  */
-require __DIR__ . '/bootstrap/cache.php';
+if (PHP_SAPI !== 'cli') {
+	require __DIR__ . '/bootstrap/cache.php';
+}
 
 /**
  * Include this file if your application uses one or more database connections.
@@ -78,7 +80,9 @@ require __DIR__ . '/bootstrap/media.php';
 /**
  * This file configures console filters and settings, specifically output behavior and coloring.
  */
-require __DIR__ . '/bootstrap/console.php';
+if (PHP_SAPI === 'cli') {
+	require __DIR__ . '/bootstrap/console.php';
+}
 
 /**
  * The environment configuration file sets the individual environment identificators
