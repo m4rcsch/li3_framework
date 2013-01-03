@@ -2,7 +2,7 @@
 /**
  * Lithium: the most rad php framework
  *
- * @copyright     Copyright 2012, Union of RAD (http://union-of-rad.org)
+ * @copyright     Copyright 2013, Union of RAD (http://union-of-rad.org)
  * @license       http://opensource.org/licenses/bsd-license.php The BSD License
  */
 
@@ -18,6 +18,19 @@
  */
 use lithium\net\http\Router;
 use lithium\core\Environment;
+
+/**
+ * With globalization enabled a localized route is configured by connecting a
+ * continuation route. Once the route has been connected, all the other
+ * application routes become localized and may now carry a locale.
+ *
+ * Requests to routes like `/en/posts/edit/1138` or `/fr/posts/edit/1138` will
+ * carry a locale, while `/posts/edit/1138` keeps on working as it did before.
+ */
+if ($locales = Environment::get('locales')) {
+	$template = '/{:locale:' . join('|', array_keys($locales)) . '}/{:args}';
+	Router::connect($template, array(), array('continue' => true));
+}
 
 /**
  * Here, we are connecting `'/'` (the base path) to controller called `'Pages'`,

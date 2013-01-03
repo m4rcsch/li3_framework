@@ -2,7 +2,7 @@
 /**
  * Lithium: the most rad php framework
  *
- * @copyright     Copyright 2012, Union of RAD (http://union-of-rad.org)
+ * @copyright     Copyright 2013, Union of RAD (http://union-of-rad.org)
  * @license       http://opensource.org/licenses/bsd-license.php The BSD License
  */
 
@@ -46,7 +46,7 @@ Dispatcher::applyFilter('run', function($self, $params, $chain) {
 			continue;
 		}
 		$file = "{$config['path']}/config/routes.php";
-		file_exists($file) ? include $file : null;
+		file_exists($file) ? call_user_func(function() use ($file) { include $file; }) : null;
 	}
 	return $chain->next($self, $params, $chain);
 });
